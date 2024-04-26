@@ -370,6 +370,8 @@ uint32_t ExtendedCodePoints[] = {
   0x27e7,  // ⟧ // MATHEMATICAL RIGHT INT BRACKET SET
   0xFFFD,  // � // REPLACEMENT CHARACTER
   0x1d422, // 𝐢 // MATHEMATICAL BOLD SMALL I"
+
+  0x2665, // ♥ // BLACK HEART SUIT
 };
 
 int NumberOfSimpleCodePoints = sizeof(SimpleCodePoints)/sizeof(SimpleCodePoints[0]);
