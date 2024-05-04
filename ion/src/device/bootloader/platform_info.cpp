@@ -17,6 +17,10 @@
 #error This file expects UPSILON_VERSION to be defined
 #endif
 
+#ifndef KAPPA_VERSION
+#error This file expects KAPPA_VERSION to be defined
+#endif
+
 namespace Ion {
 extern char staticStorageArea[];
 }
@@ -72,7 +76,8 @@ public:
     m_upsilonMagicHeader(UpsilonMagic),
     m_UpsilonVersion{UPSILON_VERSION},
     m_osType(OSType),
-    m_upsilonMagicFooter(UpsilonMagic) { }
+    m_upsilonMagicFooter(UpsilonMagic),
+    m_KappaVersion{KAPPA_VERSION} { }
 
   const char * omegaVersion() const {
     assert(m_storageAddressRAM != nullptr);
@@ -91,6 +96,15 @@ public:
     assert(m_omegaMagicHeader == OmegaMagic);
     assert(m_omegaMagicFooter == OmegaMagic);
     return m_UpsilonVersion;
+  }
+  const char * kappaVersion() const {
+    assert(m_storageAddressRAM != nullptr);
+    assert(m_storageSizeRAM != 0);
+    assert(m_header == Magic);
+    assert(m_footer == Magic);
+    assert(m_omegaMagicHeader == OmegaMagic);
+    assert(m_omegaMagicFooter == OmegaMagic);
+    return m_KappaVersion;
   }
   const volatile char * username() const volatile {
     assert(m_storageAddressRAM != nullptr);
@@ -128,6 +142,7 @@ private:
   const char m_UpsilonVersion[16];
   uint32_t m_osType;
   uint32_t m_upsilonMagicFooter;
+  const char m_KappaVersion[16];
 };
 
 const UserlandHeader __attribute__((section(".userland_header"), used)) k_userlandHeader;
@@ -160,6 +175,10 @@ const char * Ion::omegaVersion() {
 
 const char * Ion::upsilonVersion() {
   return k_userlandHeader.upsilonVersion();
+}
+
+const char * Ion::kappaVersion() {
+  return k_userlandHeader.kappaVersion();
 }
 
 const volatile char * Ion::username() {

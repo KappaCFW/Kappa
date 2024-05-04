@@ -5,6 +5,10 @@
 #error This file expects PATCH_LEVEL to be defined
 #endif
 
+#ifndef KAPPA_VERSION
+#error This file expects KAPPA_VERSION to be defined
+#endif
+
 #ifndef EPSILON_VERSION
 #error This file expects EPSILON_VERSION to be defined
 #endif
@@ -46,7 +50,8 @@ public:
     m_upsilonMagicHeader(UpsilonMagic),
     m_UpsilonVersion{UPSILON_VERSION},
     m_osType(OSType),
-    m_upsilonMagicFooter(UpsilonMagic) { }
+    m_upsilonMagicFooter(UpsilonMagic),
+    m_KappaVersion{KAPPA_VERSION} { }
   const char * version() const {
     assert(m_storageAddress != nullptr);
     assert(m_storageSize != 0);
@@ -95,6 +100,15 @@ public:
   const void * storage_address() const {
     return storageAddress;
   }
+  const char * kappaVersion() const {
+    assert(m_storageAddress != nullptr);
+    assert(m_storageSize != 0);
+    assert(m_header == Magic);
+    assert(m_footer == Magic);
+    assert(m_omegaMagicHeader == OmegaMagic);
+    assert(m_omegaMagicFooter == OmegaMagic);
+    return m_KappaVersion;
+  }
 private:
   constexpr static uint32_t Magic = 0xDEC00DF0;
   constexpr static uint32_t OmegaMagic = 0xEFBEADDE;
@@ -114,6 +128,7 @@ private:
   const char m_UpsilonVersion[16];
   uint32_t m_osType;
   uint32_t m_upsilonMagicFooter;
+  const char m_KappaVersion[16];
 
 };
 
@@ -137,6 +152,10 @@ const volatile char * Ion::username() {
 
 const char * Ion::patchLevel() {
   return platform_infos.patchLevel();
+}
+
+const char * Ion::kappaVersion() {
+  return platform_infos.kappaVersion();
 }
 
 const void * Ion::storageAddress() {

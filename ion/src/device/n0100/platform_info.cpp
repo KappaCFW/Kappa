@@ -17,6 +17,10 @@
 #error This file expects UPSILON_VERSION to be defined
 #endif
 
+#ifndef KAPPA_VERSION
+#error This file expects KAPPA_VERSION to be defined
+#endif
+
 #ifndef HEADER_SECTION
 #define HEADER_SECTION
 #endif
@@ -46,7 +50,8 @@ public:
     m_upsilonMagicHeader(UpsilonMagic),
     m_upsilonVersion{UPSILON_VERSION},
     m_osType(OSType),
-    m_upsilonMagicFooter(UpsilonMagic) { }
+    m_upsilonMagicFooter(UpsilonMagic),
+    m_KappaVersion{KAPPA_VERSION} { }
   const char * version() const {
     assert(m_storageAddress != nullptr);
     assert(m_storageSize != 0);
@@ -75,6 +80,15 @@ public:
     assert(m_omegaMagicHeader == OmegaMagic);
     assert(m_omegaMagicFooter == OmegaMagic);
     return m_omegaVersion;
+  }
+  const char * kappaVersion() const {
+    assert(m_storageAddress != nullptr);
+    assert(m_storageSize != 0);
+    assert(m_header == Magic);
+    assert(m_footer == Magic);
+    assert(m_omegaMagicHeader == OmegaMagic);
+    assert(m_omegaMagicFooter == OmegaMagic);
+    return m_KappaVersion;
   }
   const volatile char * username() const volatile {
     assert(m_storageAddress != nullptr);
@@ -116,6 +130,7 @@ private:
   const char m_upsilonVersion[16];
   uint32_t m_osType;
   uint32_t m_upsilonMagicFooter;
+  const char m_KappaVersion[16];
 
 };
 
@@ -123,6 +138,10 @@ const PlatformInfo HEADER_SECTION platform_infos;
 
 const char * Ion::softwareVersion() {
   return platform_infos.version();
+}
+
+const char * Ion::kappaVersion() {
+  return k_userlandHeader.kappaVersion();
 }
 
 const char * Ion::upsilonVersion() {
