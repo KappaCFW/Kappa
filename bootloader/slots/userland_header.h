@@ -42,7 +42,7 @@ private:
   const char m_UpsilonVersion[16];
   uint32_t m_osType;
   uint32_t m_upsilonMagicFooter;
-  const char m_KappaVersion[16]
+  const char m_KappaVersion[16];
 };
 
 extern const UserlandHeader* s_userlandHeaderA;

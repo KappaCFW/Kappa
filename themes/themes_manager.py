@@ -125,7 +125,7 @@ def write_palette_h(data, file_p):
     }
 
     # First apply a fallback theme to ensure backwards compatibility
-    defaults.update(theme_to_dict(get_data("upsilon_light",os.path.dirname(os.path.realpath(__file__)) + os.path.sep + "themes" + os.path.sep + "local")))
+    defaults.update(theme_to_dict(get_data("kappa_light",os.path.dirname(os.path.realpath(__file__)) + os.path.sep + "themes" + os.path.sep + "local")))
     defaults.update(theme_to_dict(data))
     for key in defaults.keys():
         file_p.write("  constexpr static KDColor " + key + " = KDColor::RGB24(0x" + defaults[key] + ");\n")

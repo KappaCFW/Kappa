@@ -1,6 +1,6 @@
 {
-    "name": "Omega Light",
-    "icons": "omega_light",
+    "name": "Kappa Light",
+    "icons": "kappa_light",
     "colors": {
         "PrimaryText": "000000",
         "SecondaryText": "6e6e6e",
@@ -13,7 +13,7 @@
             "AppsSecondary": "f0f0f0"
         },
         "Toolbar": {
-            "": "c03535",
+            "": "9AD5BF",
             "Text": "ffffff"
         },
         "ExpressionInput": {
@@ -34,15 +34,15 @@
             "Background": "d9d9d9"
         },
         "Control": {
-            "": "00857f",
-            "Enabled": "00b2b0",
+            "": "ffad83",
+            "Enabled": "ff8b52",
             "Disabled": "9e9e9e"
         },
         "Calculation": {
             "BackgroundOdd": "fafafa",
             "BackgroundEven": "ffffff",
             "EmptyBox": "c4c4c4",
-            "EmptyBoxNeeded": "00857f",
+            "EmptyBoxNeeded": "ffad83",
             "TrigoAndComplexForeground": "ff000c"
         },
         "Code": {
@@ -57,14 +57,14 @@
             "GutterViewBackground": "E4E6E7"
         },
         "Probability": {
-            "Curve": "00857f",
+            "Curve": "ff8b52",
             "CellBorder": "ececec",
             "HistogramBar": "d9d9d9"
         },
         "Statistics": {
-            "Box": "00857f",
+            "Box": "ffad83",
             "BoxVerticalLine": "d9d9d9",
-            "Selected": "00857f",
+            "Selected": "ffad83",
             "NotSelected": "f5f5f5"
         },
         "Graph": {
